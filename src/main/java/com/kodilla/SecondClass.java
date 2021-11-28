@@ -1,4 +1,4 @@
 package com.kodilla;
 
-public class SecondClass git{
+public class SecondClass {
 }
