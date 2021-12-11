@@ -32,6 +32,27 @@ public class CollectionTestSuite {
         List<Integer> theEmptyList = new ArrayList<>();
         //When
         List<Integer> temporaryList = oddExecutor.exterminate(theEmptyList);
+        System.out.println("The size of the list containing even numbers after use exterminate method: "
+                + temporaryList.size() + "\n We expected: 0");
+        //Then
+        Assertions.assertTrue(temporaryList.isEmpty());
+    }
+
+    @DisplayName
+            ("When we create a list containing only odd numbers " +
+                    "then the exterminate should return a new empty list"
+            )
+
+    @Test
+    void testOddNumbersExterminatorListWithOddNumbers() {
+        //Given
+        OddNumbersExterminator oddExecutor = new OddNumbersExterminator();
+        List<Integer> theOddNumbersList = Arrays.asList(3, 7, 101, 457);
+        System.out.println("The number of items in the given list: " + theOddNumbersList.size());
+        //When
+        List<Integer> temporaryList = oddExecutor.exterminate(theOddNumbersList);
+        System.out.println("The size of the list containing even numbers after use exterminate method: "
+                + temporaryList.size() + "\n We expected: 0");
         //Then
         Assertions.assertTrue(temporaryList.isEmpty());
     }
@@ -46,23 +67,24 @@ public class CollectionTestSuite {
         //Given
         OddNumbersExterminator oddExecutor = new OddNumbersExterminator();
         List<Integer> theList = new ArrayList<>();
-        Random generator = new Random();
-        for (int n = 0; n<10; n++){
-            int number = (generator.nextInt(10)+1);
-            theList.add(number);
-        }
-        System.out.println("Number of list items: " + theList.size());
+        theList.add(23);
+        theList.add(20);
+        theList.add(101);
+        theList.add(450);
+        theList.add(2);
+        theList.add(5);
+        theList.add(11);
+        theList.add(322);
+        System.out.println("The number of items in the given list: " + theList.size());
         //When
         List<Integer> temporaryList = oddExecutor.exterminate(theList);
-        System.out.println("The size of the list containing even numbers: " + temporaryList.size());
+        List<Integer> expectedList = Arrays.asList(20,450,2,322);
+        System.out.println("The size of the list containing even numbers after use exterminate method: " + temporaryList.size()
+                + "\n We expected: " + expectedList.size());
         //Then
-        for (int temporaryNumber: temporaryList) {
-            if (temporaryNumber % 2 == 0) {
-                System.out.println("The temporary number is: " + temporaryNumber + "; The OddNumbersExterminator test is OK");
-            } else {
-                System.out.println("The OddNumbersExterminator test is false");
-            }
-        }
+        Assertions.assertFalse(temporaryList.isEmpty());
+        Assertions.assertEquals(expectedList.size(),temporaryList.size());
+        Assertions.assertTrue(expectedList.equals(temporaryList));
     }
 
     @DisplayName
@@ -76,18 +98,17 @@ public class CollectionTestSuite {
         OddNumbersExterminator oddExecutor = new OddNumbersExterminator();
         Integer table[] = new Integer[] {1,2,4,5,6,7,8};
         List<Integer> list = Arrays.asList(table);
-        System.out.println(list);
+        System.out.println("The number of items in the given list: " + list.size());
         //When
         List<Integer> temporaryList = oddExecutor.exterminate(list);
-        System.out.println("The size of the list containing even numbers: " + temporaryList.size());
+        List<Integer> expectedList = Arrays.asList(2,4,6,8);
+        System.out.println("The size of the list containing even numbers after use exterminate method: " + temporaryList.size()
+                + "\n We expected: " + expectedList.size());
+
         //Then
-        for (Integer temporaryNumber : temporaryList) {
-            if (temporaryNumber %2 ==0) {
-                System.out.println("The temporary number is: " + temporaryNumber + "; The OddNumbersExterminator test is OK");
-            } else {
-                System.out.println("The temporary number is: " + temporaryNumber + "; The OddNumbersExterminator test is false");
-            }
-        }
+        Assertions.assertFalse(temporaryList.isEmpty());
+        Assertions.assertEquals(expectedList.size(), temporaryList.size());
+        Assertions.assertTrue(expectedList.equals(temporaryList));
     }
 
 }
