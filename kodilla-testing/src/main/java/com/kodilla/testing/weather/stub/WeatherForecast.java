@@ -44,15 +44,13 @@ public class WeatherForecast {
         if (temperatureList.size() % 2 == 0) {
             int n = quantityOfNumbers/2;
             int k = n - 1;
-            double result = (temperatureList.get(n) + temperatureList.get(k))/2;
-            return result;
+            return (temperatureList.get(n) + temperatureList.get(k))/2;
         } else {
             double temporaryQuantityOfNumbers = (double) quantityOfNumbers;
             double n = temporaryQuantityOfNumbers/2;
-            double k = n - 0.5;
-            int newK = (int) k;
-            double result = temperatureList.get(newK);
-            return result;
+            n = n - 0.5;
+            int newN = (int) n;
+            return temperatureList.get(newN);
         }
     }
 }
