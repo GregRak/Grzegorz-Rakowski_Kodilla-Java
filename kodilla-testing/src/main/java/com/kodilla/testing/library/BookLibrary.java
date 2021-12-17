@@ -18,4 +18,15 @@ public class BookLibrary {
         bookList = resultList;
         return bookList;
     }
+
+    public List<Book> listBooksInHandsOf(LibraryUser libraryUser) {
+        List<Book> bookList = new ArrayList<>();
+        if (libraryUser != null) {
+            List<Book> resultList = libraryDatabase.listBooksInHandsOf(libraryUser);
+            bookList = resultList;
+        } else {
+            System.out.println("The given User does not exist");
+        }
+        return bookList;
+    }
 }
