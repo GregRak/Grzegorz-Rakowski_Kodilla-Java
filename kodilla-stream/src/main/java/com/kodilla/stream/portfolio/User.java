@@ -1,6 +1,6 @@
-package com.kodilla.stream.prtfolio;
+package com.kodilla.stream.portfolio;
 
-public class User {
+public final class User {
 
     private final String username;
     private final String realName;
