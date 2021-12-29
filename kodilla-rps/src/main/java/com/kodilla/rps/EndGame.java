@@ -20,9 +20,6 @@ public class EndGame {
     }
 
     public void endGame() {
-        System.out.println(this.numberOfPlayerWinsEnd);
-        System.out.println(this.numberOfRoundToWinEnd);
-        System.out.println(this.numberOfComputerWinsEnd);
         if(this.numberOfPlayerWinsEnd == this.numberOfRoundToWinEnd) {
             System.out.println("Gratulacje!!! Wygrałeś tę grę!" + "\nCzy chcesz zagrać ponownie?");
             Info.startOrEndGame();

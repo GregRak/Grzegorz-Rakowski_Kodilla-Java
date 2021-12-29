@@ -10,6 +10,7 @@ public class Game {
     private int numberOfPlayerWins = 0;
     private int numberOfComputerWins = 0;
     private int numberOfRoundToWin;
+    private String choiceNumberOfROundToWin;
 
     public String getName() {
         return name;
@@ -31,14 +32,26 @@ public class Game {
         return numberOfRoundToWin;
     }
 
+
     public void dataCollection() {
         Scanner scanner = new Scanner(System.in);
+        boolean checkerLoop = false;
         System.out.println("Witaj w naszej grze! Podaj swoje imię");
         this.name = scanner.nextLine();
         System.out.println("Witaj " + this.name + "!" +
-                "\nDo ilu zwycięstw chcesz zagrać?");
-        this.numberOfRoundToWin = scanner.nextInt();
-        System.out.println("Dziękuję! Gramy do " + this.numberOfRoundToWin + "!");
+                "\nDo ilu zwycięstw chcesz zagrać?\nMożesz wybrać od 1 do 9");
+
+        while(!checkerLoop) {
+            this.choiceNumberOfROundToWin = scanner.next();
+            if (ScannerChecker.checker(choiceNumberOfROundToWin)) {
+                this.numberOfRoundToWin = Integer.valueOf(choiceNumberOfROundToWin);
+                System.out.println("Dziękuję! Gramy do " + this.numberOfRoundToWin + "!");
+                checkerLoop = true;
+            } else {
+                System.out.println("Nie rozpoznano wyboru. Spróbuj ponownie" +
+                        "\nDo ilu zwycięstw chcesz zagrać?\nMożesz wybrać od 1 do 9");
+            }
+        }
     }
 
     public void gamePlay() {
