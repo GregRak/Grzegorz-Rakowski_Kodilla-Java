@@ -38,36 +38,43 @@ public class Game {
         System.out.println("Witaj " + this.name + "!" +
                 "\nDo ilu zwycięstw chcesz zagrać?");
         this.numberOfRoundToWin = scanner.nextInt();
-        System.out.println("Dziękuję! Gramy do " + this.numberOfRoundToWin +
-                "!\nZaczynajmy! Twój ruch!");
+        System.out.println("Dziękuję! Gramy do " + this.numberOfRoundToWin + "!");
     }
 
     public void gamePlay() {
+        System.out.println("\nZaczynajmy! Twój ruch!");
         Scanner scanner = new Scanner(System.in);
         Random generator = new Random();
         ConvertingChoices convert = new ConvertingChoices();
+        EndGame endGame = new EndGame();
+        endGame.setNumberOfRoundToWin(this.numberOfRoundToWin);
         boolean end = false;
         while(!end) {
             if (this.numberOfPlayerWins == this.numberOfRoundToWin || this.numberOfComputerWins == this.numberOfRoundToWin) {
                 System.out.println("Koniec!!!" +
                         "\nWynik gry to: " + this.name + ": " + this.numberOfPlayerWins + " : " + this.numberOfComputerWins + " :" + this.computer);
+                endGame.endGame();
                 end = true;
             } else {
-                int playerChooseScan = scanner.nextInt();
+      //          int playerChooseScan = scanner.nextInt();
+                String playerChooseScan = scanner.nextLine();
                 int computerChooseScan = generator.nextInt(2) + 1;
-                String playerChoose = convert.chooseReturn(playerChooseScan);
-                String computerChoose = convert.chooseReturn(computerChooseScan);
-                System.out.println("Wybrałeś " + playerChoose + ", komputer wybrał: " + computerChoose);
-                if (playerChooseScan == computerChooseScan) {
+                String playerChoose = convert.choosePlayerReturn(playerChooseScan);
+                String computerChoose = convert.chooseComputerReturn(computerChooseScan);
+                System.out.println(playerChoose + ",\n komputer wybrał: " + computerChoose);
+                if ((playerChooseScan.equals("1") && computerChooseScan == 1) || (playerChooseScan.equals("2") && computerChooseScan == 2) ||
+                        (playerChooseScan.equals("3") && computerChooseScan == 3)) {
                     System.out.println("Remis! Gramy dalej");
-                } else if ((playerChooseScan == 1 && computerChooseScan == 3) || (playerChooseScan == 2 && computerChooseScan == 1) ||
-                        (playerChooseScan == 3 && computerChooseScan == 2)) {
+                } else if ((playerChooseScan.equals("1") && computerChooseScan == 3) || (playerChooseScan.equals("2") && computerChooseScan == 1) ||
+                        (playerChooseScan.equals("3") && computerChooseScan == 2)) {
                     this.numberOfPlayerWins++;
+                    endGame.addNumberOfPlayerWins();
                     System.out.println("Gratulacje! Wygrałeś tę rundę!" +
                             "\nObecny wynik to: " + this.name + ": " + this.numberOfPlayerWins + " : " + this.numberOfComputerWins + " :" + this.computer);
-                } else if ((playerChooseScan == 1 && computerChooseScan == 2) || (playerChooseScan == 2 && computerChooseScan == 3) ||
-                        (playerChooseScan == 3 && computerChooseScan == 1)) {
+                } else if ((playerChooseScan.equals("1") && computerChooseScan == 2) || (playerChooseScan.equals("2") && computerChooseScan == 3) ||
+                        (playerChooseScan.equals("3") && computerChooseScan == 1)) {
                     this.numberOfComputerWins++;
+                    endGame.addNumberOfComputerWins();
                     System.out.println("Niestety przegrałeś tę rundę..." +
                             "\nObecny wynik to: " + this.name + ": " + this.numberOfPlayerWins + " : " + this.numberOfComputerWins + " :" + this.computer);
                 }

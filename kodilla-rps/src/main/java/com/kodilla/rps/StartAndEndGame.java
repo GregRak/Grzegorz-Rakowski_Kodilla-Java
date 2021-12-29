@@ -17,10 +17,8 @@ public class StartAndEndGame {
                 Info.infoAboutGame();
                 Info.howToPlay();
                 Game game1 = new Game();
-                EndGame endGame = new EndGame();
                 game1.dataCollection();
                 game1.gamePlay();
-                endGame.endGame();
             } else if(choose.contains("x")) {
                 System.out.println("Dziękujemy za grę! Zapraszamy ponownie!");
                 endLoop = true;
