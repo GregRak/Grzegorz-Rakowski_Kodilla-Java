@@ -9,7 +9,7 @@ public class FileReaderTestSuite {
     @Test
     void testReadFile() {
         //Given
-        FileReader fileReader = new FileReader();
+        FileReaderWithException fileReader = new FileReaderWithException();
         //When & Then
         assertDoesNotThrow(() -> fileReader.readFile());
     }
