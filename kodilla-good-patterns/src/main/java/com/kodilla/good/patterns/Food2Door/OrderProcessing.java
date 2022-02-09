@@ -16,7 +16,8 @@ public class OrderProcessing {
             infoService.sendEMailToSupplier(order);
             infoService.sendEmailToUser(order);
             infoService.sendSMSToUser(order);
-            return false;
+            return true;
+//            return false;
         } else {
             return false;
         }

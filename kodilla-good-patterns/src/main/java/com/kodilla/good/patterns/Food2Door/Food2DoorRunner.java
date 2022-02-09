@@ -1,15 +1,19 @@
 package com.kodilla.good.patterns.Food2Door;
 
+import java.util.List;
+
 public class Food2DoorRunner {
 
     public static void main (String[] args) {
-        UserRetriever userRetriever = new UserRetriever();
-        SuppliersList suppliersList = new SuppliersList();
+        List<Order> ordersList = new OrderRetriever().orderRetriever();
         CompletingChecker completingChecker = new CompletingChecker();
 
-        Order order1 = new Order(1, userRetriever.userRetriever(), suppliersList.getSuppliersList().get(0), 5);
-        OrderProcessing orderProcessing = new OrderProcessing(new ExtraFoodShopService(), new ExtraFoodShopInfoService());
+        OrderProcessing orderProcessing1 = new OrderProcessing(new ExtraFoodShopService(), new ExtraFoodShopInfoService());
+        OrderProcessing orderProcessing2 = new OrderProcessing(new HealthyShopService(), new HealthyShopInfoService());
+        OrderProcessing orderProcessing3 = new OrderProcessing(new GlutenFreeShopService(), new GlutenFreeShopInfoService());
 
-        completingChecker.checkCompletingOrder(orderProcessing, order1);
+        completingChecker.checkCompletingOrder(orderProcessing1, ordersList.get(0));
+        completingChecker.checkCompletingOrder(orderProcessing2, ordersList.get(1));
+        completingChecker.checkCompletingOrder(orderProcessing3, ordersList.get(2));
     }
 }
