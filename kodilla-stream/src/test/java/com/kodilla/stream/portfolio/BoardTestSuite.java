@@ -99,7 +99,7 @@ public class BoardTestSuite {
 
 
     @Test
-    void testAddTaskListFindLongTasks() {
+    void testAddTaskListFindLongTasks2() {
         //Given
         Board project = prepareTestData();
 
