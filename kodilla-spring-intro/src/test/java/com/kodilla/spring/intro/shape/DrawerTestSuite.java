@@ -7,14 +7,24 @@ import static org.junit.jupiter.api.Assertions.*;
 class DrawerTestSuite {
 
     @Test
-    void testDoDrawing() {
+    void testDoDrawingWithCircle() {
         //Given
-        Drawer drawer = new Drawer();
-
+        Circle circle = new Circle();
         //When
-        drawer.doDrawing();
-
+        Drawer drawer = new Drawer(circle);
+        String expectedResult = "This is a circle";
         //Then
-        //do nothing
+        assertEquals(expectedResult, drawer.doDrawing());
+    }
+
+    @Test
+    void testDoDrawingWithTriangle() {
+        //Given
+        Triangle triangle = new Triangle();
+        //When
+        Drawer drawer = new Drawer(triangle);
+        String expectedResult = "This is a triangle";
+        //Then
+        assertEquals(expectedResult, drawer.doDrawing());
     }
 }

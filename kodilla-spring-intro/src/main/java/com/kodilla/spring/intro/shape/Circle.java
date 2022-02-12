@@ -15,4 +15,8 @@ public class Circle implements Shape{
         System.out.println("This is a circle");
         return "This is a circle";
     }
+
+    public String draw2() {
+        return "This is a second implementation";
+    }
 }
