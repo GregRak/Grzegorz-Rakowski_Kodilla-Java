@@ -2,7 +2,7 @@ package com.kodilla.spring.library;
 
 import org.springframework.stereotype.Repository;
 
-@Repository
+//@Repository
 public class LibraryDbController {
 
     public void saveData() {
