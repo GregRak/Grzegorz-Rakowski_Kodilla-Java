@@ -42,15 +42,26 @@ public class BoardTestSuite {
         try {
             cloneBoard = board.shallowCopy();
             cloneBoard.setName("Project 2");
-        } catch (CloneNotSupportedException e) {
+        } catch(CloneNotSupportedException e) {
+            System.out.println(e);
+        }
+
+        //making a deep copy of object board
+        Board deepCloneBoard = null;
+        try {
+            deepCloneBoard = board.deepCopy();
+            deepCloneBoard.setName("Project 3");
+        } catch(CloneNotSupportedException e) {
             System.out.println(e);
         }
 
         System.out.println(board);
         System.out.println(cloneBoard);
+        System.out.println(deepCloneBoard);
         //When
         //Then
         assertEquals(3, board.getLists().size());
         assertEquals(3, cloneBoard.getLists().size());
+        assertEquals(3, deepCloneBoard.getLists().size());
     }
 }
