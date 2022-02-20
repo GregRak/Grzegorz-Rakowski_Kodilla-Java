@@ -1,4 +1,4 @@
-package com.kodilla.patterns.com.kodilla.patterns.prototype;
+package com.kodilla.patterns.prototype;
 
 import java.util.ArrayList;
 import java.util.List;

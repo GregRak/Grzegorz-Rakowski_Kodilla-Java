@@ -1,8 +1,5 @@
-package com.kodilla.patterns.singleton.com.kodilla.patterns.prototype;
+package com.kodilla.patterns.prototype;
 
-import com.kodilla.patterns.com.kodilla.patterns.prototype.Board;
-import com.kodilla.patterns.com.kodilla.patterns.prototype.Task;
-import com.kodilla.patterns.com.kodilla.patterns.prototype.TasksList;
 import org.junit.jupiter.api.Test;
 import java.util.stream.IntStream;
 

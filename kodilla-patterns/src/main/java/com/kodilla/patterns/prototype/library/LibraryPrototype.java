@@ -1,6 +1,6 @@
-package com.kodilla.patterns.com.kodilla.patterns.prototype;
+package com.kodilla.patterns.prototype.library;
 
-public class Prototype<T> implements Cloneable {
+public class LibraryPrototype<T> implements Cloneable {
 
     @Override
     public T clone() throws CloneNotSupportedException {
