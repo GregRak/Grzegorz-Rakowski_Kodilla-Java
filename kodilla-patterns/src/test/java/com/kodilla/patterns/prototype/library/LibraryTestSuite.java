@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -35,12 +36,19 @@ public class LibraryTestSuite {
             System.out.println(e);
         }
 
-        System.out.println(library1 + "\n");
-        System.out.println(library2);
-        System.out.println(library3);
+
         //When
+        library1.getBooks().add(new Book("Additional Book(Shallow)", "Author 123", LocalDate.of(2021, 1, 1)));
+        library3.getBooks().add(new Book("Additional Book(Deep)", "Author 123", LocalDate.of(2021, 1, 1)));
+        library3.getBooks().add(new Book("Additional Book(Deep)2", "Author 1234", LocalDate.of(2022, 1, 1)));
+        System.out.println(library1 + "Number of books: " + library1.getBooks().size() + "\n");
+        System.out.println(library2 + "Number of books: " + library2.getBooks().size() + "\n");
+        System.out.println(library3 + "Number of books: " + library3.getBooks().size() + "\n");
         //Then
-        assertEquals(20, library1.getBooks().size());
-        assertEquals(20, library2.getBooks().size());
+        assertEquals(21, library1.getBooks().size());
+        assertEquals(21, library2.getBooks().size());
+        assertEquals(22, library3.getBooks().size());
+        assertEquals(library1.getBooks().size(), library2.getBooks().size());
+        assertNotEquals(library1.getBooks().size(), library3.getBooks().size());
     }
 }
