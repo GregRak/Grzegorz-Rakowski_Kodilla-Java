@@ -1,0 +1,45 @@
+CREATE TABLE ISSUESLISTS
+(
+	ID SERIAL PRIMARY KEY,
+	NAME VARCHAR(50)
+);
+
+CREATE TABLE ISSUES
+(
+	ID SERIAL PRIMARY KEY,
+	ISSUESLIST_ID BIGINT UNSIGNED NOT NULL,
+	SUMMARY VARCHAR(100) CHARSET utf8,
+	DESCRIPTION VARCHAR(1000) CHARSET utf8,
+	USER_ID_ASSIGNEDTO BIGINT UNSIGNED NOT NULL,
+	FOREIGN KEY (ISSUESLISTS_ID) REFERENCES ISSUELISTS(ID),
+	FOREIGN KEY (USER_ID_ASSIGNEDTO) REFERENCES USERS(ID)
+);
+
+INSERT INTO ISSUESLISTS(NAME)
+VALUES
+    ('ToDo'),
+    ('In progress'),
+    ('Done');
+
+INSERT INTO ISSUES(ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES
+       (1, 'Shopping for today', 'Buy bread and butter', 1),
+       (1, 'Telephone', 'Call John', 3),
+       (1, 'Email', 'Send an email to Bank', 5),
+       (1, 'Work', 'Prepare quotation for client X', 2),
+       (1, 'Dentist', 'Make an appointment with the dentist', 4),
+
+       (2, 'Basement', 'Clean the basement', 1),
+       (2, 'Telephone', 'Call to insurer', 4),
+       (2, 'Work', 'Prepare the presentation for the meeting', 5),
+       (2, 'Work', 'Prepare a report for the boss', 3),
+       (2, 'Shopping for today', 'Buy tools for the workshop', 4),
+
+       (3, 'Shopping for today', 'Buy water and coffee', 2),
+       (3, 'Telephone', 'Call Susan', 3),
+       (3, 'Email', 'Send an email to lawyer', 4),
+       (3, 'Work', 'Prepare quotation for client Z', 1),
+       (3, 'Doctor', 'Make an appointment with the doctor', 5);
+
+COMMIT;
+
