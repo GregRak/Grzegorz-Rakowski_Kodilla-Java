@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -28,6 +29,21 @@ public class TaskDaoTestSuite {
         assertTrue(readTask.isPresent());
 
         //CleanUp
+        taskDao.deleteById(id);
+    }
+
+    @Test
+    void testTaskDaoFindByDuration() {
+        //Given
+        Task task = new Task(DESCRIPTION, 7);
+        taskDao.save(task);
+        int duration = task.getDuration();
+        //When
+        List<Task> resultList = taskDao.findByDuration(duration);
+        //Then
+        assertEquals(1, resultList.size());
+        //CleanUp
+        int id = resultList.get(0).getId();
         taskDao.deleteById(id);
     }
 }
