@@ -10,6 +10,11 @@ import java.util.List;
         query = "FROM Employee WHERE lastName LIKE :LASTNAME"
 )
 
+@NamedQuery(
+        name = "Employee.searchEmployee",
+        query = "FROM Employee WHERE lastName LIKE :SUBSTRING"
+)
+
 @Entity
 @Table(name = "EMPLOYEES")
 public class Employee {
